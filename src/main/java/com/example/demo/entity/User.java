@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.entity;
 
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
@@ -12,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import java.sql.Date;
 
 @Data
@@ -25,15 +27,20 @@ public class User {
     private Long id;
 
     @Column(name = "name")
+    @NotBlank(message = "Name is mandatory")
     private String name;
 
     @Column(name = "email")
+    @NotBlank(message = "Email is mandatory")
+    @Min(value = 8, message = "Email min 8 character")
     private String email;
 
     @Column(name = "phone")
+    @NotBlank(message = "Phone is mandatory")
     private String phone;
 
     @Column(name = "address")
+    @NotBlank(message = "Address is mandatory")
     private String address;
 
     @Column(name = "created_date")
