@@ -12,8 +12,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
 import java.sql.Date;
 
 @Data
@@ -26,7 +24,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "name")
+    @Column(name = "name", unique = true)
 //    @NotBlank(message = "Name is mandatory")
     private String name;
 
@@ -53,4 +51,15 @@ public class User {
 
     @Column(name = "is_delete")
     private int isDelete = 0;
+
+
+    public User( String name, String phone, String address, String email, int is_delete) {
+        this.name = name;
+        this.phone = phone;
+        this.address = address;
+        this.email = email;
+        this.isDelete = is_delete;
+    }
+
+    public User() { }
 }
