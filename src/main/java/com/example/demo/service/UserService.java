@@ -1,5 +1,6 @@
 package com.example.demo.service;
 
+import com.example.demo.dto.UserDTO;
 import com.example.demo.entity.User;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +11,7 @@ import java.util.Optional;
 public interface UserService {
     List<User> getAll();
 
-    List<User> createUser(User user);
+    List<User> createUser(UserDTO userDTO);
 
     Optional<User> findById(Long userId);
 

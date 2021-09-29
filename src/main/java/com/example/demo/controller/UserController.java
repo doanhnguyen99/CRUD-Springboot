@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.common.Response;
+import com.example.demo.dto.UserDTO;
 import com.example.demo.entity.User;
 import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,8 +35,8 @@ public class UserController {
 
     // Create user
     @PostMapping("/create")
-    public List<User> createUser(@Valid @RequestBody User user){
-       return userService.createUser(user);
+    public List<User> createUser(@Valid @RequestBody UserDTO userDTO){
+       return userService.createUser(userDTO);
     }
 
     // get user by id

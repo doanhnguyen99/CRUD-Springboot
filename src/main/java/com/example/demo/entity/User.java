@@ -27,20 +27,20 @@ public class User {
     private Long id;
 
     @Column(name = "name")
-    @NotBlank(message = "Name is mandatory")
+//    @NotBlank(message = "Name is mandatory")
     private String name;
 
     @Column(name = "email")
-    @NotBlank(message = "Email is mandatory")
-    @Min(value = 8, message = "Email min 8 character")
+//    @NotBlank(message = "Email is mandatory")
+//    @Min(value = 8, message = "Email min 8 character")
     private String email;
 
     @Column(name = "phone")
-    @NotBlank(message = "Phone is mandatory")
+//    @NotBlank(message = "Phone is mandatory")
     private String phone;
 
     @Column(name = "address")
-    @NotBlank(message = "Address is mandatory")
+//    @NotBlank(message = "Address is mandatory")
     private String address;
 
     @Column(name = "created_date")
