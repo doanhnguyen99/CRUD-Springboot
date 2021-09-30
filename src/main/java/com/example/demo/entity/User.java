@@ -24,7 +24,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "name", unique = true)
+    @Column(name = "name")
 //    @NotBlank(message = "Name is mandatory")
     private String name;
 

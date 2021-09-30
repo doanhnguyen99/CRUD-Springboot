@@ -19,6 +19,7 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private ModelMapper modelMapper;
 
+    @Override
     public List<User> getAll() {
         return userRepository.findAll();
     }

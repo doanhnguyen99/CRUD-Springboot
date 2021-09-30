@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -28,9 +29,22 @@ public class CSVServiceImpl implements CSVService{
     public void save(MultipartFile file){
         try {
             List<User> users = CSVHelper.uploadCSV(file.getInputStream());
-            userRepository.saveAll(users);
+            List<String> listName = new ArrayList<>();
+            for (User user : users){
+                listName.add(user.getName());
+            }
 
-        }catch (IOException e){
+            System.out.println(listName);
+            List<User> listUser = userRepository.getUserDuplicate(listName);
+            int countUser = listUser.size();
+            System.out.println(countUser);
+            if (countUser == 0){
+                userRepository.saveAll(users);
+            }else{
+                throw new IOException("Duplicate field name data");
+            }
+
+        } catch (IOException e){
             throw new RuntimeException("Fail to store data csv: " + e.getMessage());
         }
     }
